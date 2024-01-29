@@ -25,6 +25,10 @@ return new class extends Migration
             $table->integer('estoque_minimo')->default(1);
             $table->integer('estoque_maximo')->default(1);
             $table->timestamps();
+            //foreign key (constraits)
+            $table->Foreign('filial_id')->references('id')->on('filials');
+            $table->Foreign('product_id')->references('id')->on('products');
+
         });
 
         //removendo colunas da tabela produtos
@@ -40,6 +44,18 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ajuste_tabela_filials');
+        //removendo colunas da tabela produtos
+        Schema::table('products', function (Blueprint $table) {
+            $table->double('Preco_venda', 8, 2)->default(0.1);
+            $table->integer('estoque_minimo')->default(1);
+            $table->integer('estoque_maximo')->default(1);
+
+        });
+
+
+        Schema::dropIfExists('produto_filiais');
+
+        Schema::dropIfExists('filials');
+
     }
 };
