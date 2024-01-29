@@ -5,7 +5,10 @@
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-ddee773b.js",
+    "css": [
+      "assets/app-9ee9de9a.css"
+    ],
+    "file": "assets/app-5de9a963.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
