@@ -44,7 +44,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //removendo colunas da tabela produtos
+        //removendo colunas da tabela produtos refatoração
         Schema::table('products', function (Blueprint $table) {
             $table->double('Preco_venda', 8, 2)->default(0.1);
             $table->integer('estoque_minimo')->default(1);
