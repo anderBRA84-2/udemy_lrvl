@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fornecedors', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 50);
-            $table->timestamps();
-            //$table->softDeletes();
-
+        //
+        Schema::table('fornecedors', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -25,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fornecedors');
+        //
+        Schema::table('fornecedors', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };
