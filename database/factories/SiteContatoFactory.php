@@ -4,10 +4,11 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Fornecedor>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SiteContato>
  */
-class FornecedorFactory extends Factory
+class SiteContatoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +18,12 @@ class FornecedorFactory extends Factory
     public function definition(): array
     {
         return [
+            
             'name' => fake()->name(),
-            'site' => fake()->url(),
-            'uf' => fake()->stateAbbr(),
+            'telefone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
+            'motivo_contato' => fake()->numberBetween(1,3),
+            'mensagem' => fake()->text(200)
         ];
     }
 }
