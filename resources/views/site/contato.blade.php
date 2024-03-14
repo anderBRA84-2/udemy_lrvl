@@ -10,7 +10,7 @@
 
     <div class="informacao-pagina">
         <div class="contato-principal">
-            @component('site.layouts.components.formContato', ['class'=>'borda-preta']){{-- o parametro pode ser incluido dentro da diretiva ou na chamada da diretiva  --}}
+            @component('site.layouts.components.formContato', ['class'=>'borda-preta', 'motivo_contato' => $motivo_contato]){{-- o parametro pode ser incluido dentro da diretiva ou na chamada da diretiva  --}}
             <p> A nossa equipe ira entrar em contato o mais breve possivel</p>
             <p> O nosso tempo de resposta é de aproximadamente de 48h </p>
             @endcomponent

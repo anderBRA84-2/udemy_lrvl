@@ -2,20 +2,24 @@
 {{ $slot }}{{-- com a variavel $slot recebemos o parametro definido dentro da diretiva component na view contato--}}
 <form action={{ route('site.contato') }} method="post">
     @csrf {{-- token para utilizar o metodo post --}}
-    <input name="name" type="text" placeholder="Nome" class={{ $class }}>
+    {{-- metodo old recupera o request caso ocorra algum erro de validacao  --}}
+    <input name="name" value="{{ old('name') }}" type="text" placeholder="Nome" class={{ $class }}>
     <br>
-    <input name="telefone" type="text" placeholder="Telefone" class={{ $class }}>
+    <input name="telefone" value="{{ old('telefone') }}" type="text" placeholder="Telefone" class={{ $class }}>
     <br>
-    <input  name="email" type="text" placeholder="E-mail" class={{ $class }}>
+    <input  name="email" value="{{ old('email') }}" type="text" placeholder="E-mail" class={{ $class }}>
     <br>
-    <select name="motivo_contato" class={{ $class }}>
+    
+    <select name="motivo_contato_id" value="{{ old('motivo_contato_id') }}" class={{ $class }}>
         <option value="">Qual o motivo do contato?</option>
-        <option value="1">Dúvida</option>
-        <option value="2">Elogio</option>
-        <option value="3">Reclamação</option>
+
+        @foreach ($motivo_contato as $key => $motivo_contatos ) {{-- o array com as opcoes estao definidos no contato controller --}}
+            <option value="{{ $motivo_contatos->id }}" {{ old('motivo_contato_id') ==  $motivo_contatos->id ? 'selected' : '' }}>{{ $motivo_contatos->motivo_contato }}</option>            
+        @endforeach
+
     </select>
     <br>
-    <textarea name="mensagem" class={{ $class }}>Preencha aqui a sua mensagem</textarea>
+    <textarea name="mensagem" class={{ $class }}>{{ (old('mensagem') != '' ) ? old('mensagem') : 'Preencha aqui a sua mensagem'}}</textarea>    
     <br>
     <button type="submit" class={{ $class }}>ENVIAR</button>
 </form>
