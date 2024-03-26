@@ -28,6 +28,8 @@ return new class extends Migration
             $table->dropColumn('motivo_contato');
            });
 
+           //lembrando que a coluna motivo_contato esta sendo excluida e subtituida pela coluna motivo_contato_id
+           //devemos ajustar onde a coluna motivo_contato era requisitada
           
     }
 
