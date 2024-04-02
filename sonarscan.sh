@@ -1,12 +1,22 @@
-docker run
-–rm
-–net host
--e SONAR_HOST_URL=“http://localhost:9000”
--v /var/www/html/udemy_lrvl:/root/src
-sonarsource/sonar-scanner-cli
--Dsonar.projectKey=udemy_lrvl_sonar
--Dsonar.sonar.projectName=udemy_lrvl_sonar
--Dsonar.sonar.projectVersion=1.0
--Dsonar.sonar.sourceEncoding=UTF-8
--Dsonar.sonar.host.url=http://localhost:9000
--Dsonar.login=sqp_376fd0b0d83dde6613698cebf8607e2363023bcf
+#!/bin/bash
+
+cd /tmp || exit
+
+echo "Downloading sonar-scanner....."
+if [ -d "/tmp/sonar-scanner-cli-5.0.1.3006-linux.zip" ];then
+    sudo rm /tmp/sonar-scanner-cli-5.0.1.3006-linux.zip
+fi
+
+wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+echo "Download completed."
+
+echo "Unziping downloaded file..."
+unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+echo "Unzip completed."
+rm sonar-scanner-cli--linux.zip
+
+echo "Installing to opt..."
+if [ -d "/var/opt/sonar-scanner--linux" ];then
+    sudo rm -rf /var/opt/sonar-scanner--linux
+fi
+sudo mv sonar-scanner-5.0.1.3006-linux /var/opt

@@ -11,6 +11,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "icons": "^1.0.0"
+        "icons": "^1.0.0",
+        "sonarqube": "^0.0.1"
     }
 }
