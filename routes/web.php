@@ -8,8 +8,13 @@ use App\Http\Controllers\{
     TesteController,
     FornecedoresController,
 };
+use App\Http\Middleware\{
+    LogAcessoMiddleware,
+};
 
-Route::get('/', [PrincipalController::class,'principal'])->name('site.index');
+Route::middleware(LogAcessoMiddleware::class)
+->get('/', [PrincipalController::class,'principal'])
+->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');

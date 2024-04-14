@@ -2,5 +2,5 @@ projectKey=udemy_lrvl
 serverUrl=http://localhost:9000
 serverVersion=10.4.1.88267
 dashboardUrl=http://localhost:9000/dashboard?id=udemy_lrvl
-ceTaskId=6606d077-3ef8-4f85-8873-f7e72238ccdb
-ceTaskUrl=http://localhost:9000/api/ce/task?id=6606d077-3ef8-4f85-8873-f7e72238ccdb
+ceTaskId=5e794583-eced-47a0-a30b-9452ebd33c60
+ceTaskUrl=http://localhost:9000/api/ce/task?id=5e794583-eced-47a0-a30b-9452ebd33c60
