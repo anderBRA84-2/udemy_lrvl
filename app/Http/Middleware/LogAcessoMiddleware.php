@@ -18,10 +18,9 @@ class LogAcessoMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $ip = $request->server->get('REMOTE_ADDR');
-        $route = $request->getRequestUri();//atributo de campo unico é recuperado com getNomeDoAtributo
-       // return $next($request);
+       $ip = $request->server->get('REMOTE_ADDR');
+       $route = $request->getRequestUri();//atributo de campo unico é recuperado com getNomeDoAtributo
        LogAcesso::create(['log' => " o IP $ip acessou a rota $route"]);//com " " podemos interpolar a varial sem a necessidade de concatenar
-       return response('site.index');
+       return $next($request);// continua o fluxo da requisição após registrar o log de acesso
     }
 }
