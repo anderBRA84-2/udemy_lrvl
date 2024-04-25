@@ -13,10 +13,14 @@ class SobreNosController extends Controller
      /**
      * Class constructor.
      */
-    public function __construct()
-    {
-        $this->Middleware(LogAcessoMiddleware::class);
-    }
+
+     /** incluindo o middleware direto no controlador
+    * public function __construct()
+   * {
+   *     $this->Middleware(LogAcessoMiddleware::class);
+     *  }
+
+    */
 
     public function sobrenos (){
         return view('site.sobrenos', ['title'=>'Sobre Nós']);

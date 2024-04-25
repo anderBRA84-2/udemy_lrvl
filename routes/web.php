@@ -8,25 +8,23 @@ use App\Http\Controllers\{
     TesteController,
     FornecedoresController,
 };
-use App\Http\Middleware\{
-    LogAcessoMiddleware,
-};
 
-Route::middleware(LogAcessoMiddleware::class)
-->get('/', [PrincipalController::class,'principal'])
-->name('site.index');
-Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
-Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
-Route::get('/login', function(){return 'login';})->name('site.login');
+        Route::get('/', [PrincipalController::class,'principal'])->name('site.index');
+        Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
+        Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+        Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
+        Route::get('/login', function(){return 'login';})->name('site.login');
 
 
-Route::prefix('app')->group(function() {
-    Route::get('/clientes', function(){return 'clientes';})->name('app.clientes');
-    Route::get('/fornecedores', [FornecedoresController::class, 'index'])->name('app.fornecedores');
-    Route::get('/produtos', function(){return 'produtos';})->name('app.produtos');
+    Route::middleware("autenticacao:padrao,usuario")->prefix('app')->group(function() {//passar parametros para o middleware com : e uma string que sera o parametro no metodo handle do middleware
 
-});
+        Route::get('/clientes', function(){return 'clientes';})->name('app.clientes');
+        Route::get('/fornecedores', [FornecedoresController::class, 'index'])->name('app.fornecedores');
+        Route::get('/produtos', function(){return 'produtos';})->name('app.produtos');
+
+    });
+
+
 
 //passando parametros para o controlador
 Route::get('teste/{p1}/{p2}',[TesteController::class,'teste']);

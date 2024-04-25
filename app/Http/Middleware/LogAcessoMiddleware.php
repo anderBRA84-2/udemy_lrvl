@@ -21,6 +21,9 @@ class LogAcessoMiddleware
        $ip = $request->server->get('REMOTE_ADDR');
        $route = $request->getRequestUri();//atributo de campo unico é recuperado com getNomeDoAtributo
        LogAcesso::create(['log' => " o IP $ip acessou a rota $route"]);//com " " podemos interpolar a varial sem a necessidade de concatenar
-       return $next($request);// continua o fluxo da requisição após registrar o log de acesso
+      $resposta = $next($request);
+      $resposta->setStatusCode(201, 'foi tudo alterado amigao');//manipulando a resposta da requisicao
+      return $resposta;
+       //return $next($request);// continua o fluxo da requisição após registrar o log de acesso
     }
 }
