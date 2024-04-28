@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "icons": "^1.0.0",
+        "sonar-scanner": "^3.1.0",
         "sonarqube": "^0.0.1"
     }
 }

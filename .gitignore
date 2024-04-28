@@ -1,2 +1,4 @@
 debian2
 debian2.pub
+/node_modules/sonarqube/*
+/node_modules/sonar-scanner/*
