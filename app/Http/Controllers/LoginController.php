@@ -12,9 +12,19 @@ use App\Models\{
 class LoginController extends Controller
 {
     //
-    public function index () {
+    public function index (Request $request) {
 
-        return view('site.login', ['title' => 'LOGIN']);
+        $erro = '';
+
+        if($request->get('erro') == 1){
+            $erro = 'Usuario ou senha invalidos';
+        };
+
+        if($request->get('erro') == 2){
+            $erro = 'Necessario fazer login para acessar a pagina';
+        };
+
+        return view('site.login', ['title' => 'LOGIN', 'erro' => $erro]);
 
     }
 
@@ -47,11 +57,21 @@ class LoginController extends Controller
         $usuario = $user->where('email', $email)->where('password', $password)->get()->first();
 
         if(isset($usuario->name)){
-            echo "usuario existe";
+            session_start();
+            $_SESSION['name'] = $usuario->name;
+            $_SESSION['email'] = $usuario->email;
+           //dd($_SESSION);
+           return redirect()->route('app.home');
         } else{
-            echo "usuario nao existe";
-        };
-        
+            return redirect()->route('site.login',['erro'=>1]);
+        };       
 
+    }
+
+    public function sair (){
+
+        session_destroy();
+
+        return redirect()->route('site.index');
     }
 }

@@ -16,15 +16,12 @@ class AutenticacaoMiddleware
      */
     public function handle(Request $request, Closure $next, $metodo_autenticacao,$user ): Response /*$metodo_autenticacao recebe a string passada como parametro que foi passada na rota web */
     {
-        $user = Auth::user();
+        session_start();
 
-
-        if ($metodo_autenticacao == 'padrao') {
-            return response("Ola $user");
-
-            // return $next($request);
-        }else {
-            return response('acesso negado usuario não autenticado');
+        if(isset($_SESSION['email']) && $_SESSION['email'] != ''){
+            return $next($request);
+        } else{
+            return redirect()->route('site.login',['erro' => 2]);
         }
 
     }
