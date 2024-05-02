@@ -26,6 +26,7 @@ use App\Http\Controllers\{
         Route::get('/clientes', [ClienteController::class, 'index'])->name('app.clientes');
         Route::get('/fornecedores', [FornecedoresController::class, 'index'])->name('app.fornecedores');
         Route::post('/fornecedores/listar', [FornecedoresController::class, 'listar'])->name('app.fornecedores.listar');
+        Route::post('/fornecedores/adicionar', [FornecedoresController::class, 'adicionar'])->name('app.fornecedores.adicionar');
         Route::get('/fornecedores/adicionar', [FornecedoresController::class, 'adicionar'])->name('app.fornecedores.adicionar');
         Route::get('/produtos', [ProdutosController::class, 'index'])->name('app.produtos');
 
