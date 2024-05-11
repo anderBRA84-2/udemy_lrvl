@@ -111,14 +111,14 @@ button:hover {
 
 .esquerda {
     float:left;
-    background-color: #268fd0;
+    background-color: #00afbd;
     width: 60%;
     height: 100%;
 }
 
 .direita {
     float:right;
-    background-color: #2a9ee2;
+    background-color: #00afbd;
     width: 40%;
     height: 100%;
 }
@@ -154,7 +154,7 @@ button:hover {
 
 .titulo-pagina {
     padding: 100px 0px 60px 0px;
-    background-color: #2a9ee2;
+    background-color: #00afbd;
     text-align: center;
 }
 
