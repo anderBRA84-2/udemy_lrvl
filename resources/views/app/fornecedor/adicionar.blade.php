@@ -17,17 +17,18 @@
     </div>
 
     <div class="informacao-pagina">
-        <h1 style="color:red;">{{ $msg }}</h1>
+        <h1 style="color:red;">{{ $msg ?? ''}}</h1>
         <div style="width:30%; margin-left: auto; margin-right: auto;">
             <form method="post" action="{{ route('app.fornecedores.adicionar') }}">
-                @csrf
-                <input type="text" name="name" value="{{ old('name') }}" placeholder="Nome" class="borda-preta">
+                <input type="hidden" name="id" value="{{ $fornecedor->id ?? '' }}">
+                @csrf                
+                <input type="text" name="name" value="{{ $fornecedor->name ?? old('name') }}" placeholder="Nome" class="borda-preta">
                 {{ $errors->has('name') ? $errors->first('name') : '' }}
-                <input type="text" name="site" value="{{ old('site') }}" placeholder="Site" class="borda-preta">
+                <input type="text" name="site" value="{{ $fornecedor->site ?? old('site') }}" placeholder="Site" class="borda-preta">
                 {{ $errors->has('site') ? $errors->first('site') : '' }}
-                <input type="text" name="uf" value="{{ old('uf') }}" placeholder="UF" class="borda-preta">
+                <input type="text" name="uf" value="{{ $fornecedor->uf ?? old('uf') }}" placeholder="UF" class="borda-preta">
                 {{ $errors->has('uf') ? $errors->first('uf') : '' }}
-                <input type="text" name="email" value="{{ old('email') }}" placeholder="email" class="borda-preta">
+                <input type="text" name="email" value="{{ $fornecedor->email ?? old('email') }}" placeholder="email" class="borda-preta">
                 {{ $errors->has('email') ? $errors->first('email') : '' }}
                 <button type="submit" class="borda-preta">Cadestrar</button>
             </form>
