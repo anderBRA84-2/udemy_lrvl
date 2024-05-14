@@ -18,18 +18,18 @@ class FornecedoresController extends Controller
         ->where('site', 'like','%'.$request->input('site').'%')
         ->where('uf', 'like','%'.$request->input('uf').'%')
         ->where('email', 'like','%'.$request->input('email').'%')
-        ->get();
+        ->paginate(2);
 
-        
+
         //dd($fornecedores);
 
-        return view('app.fornecedor.listar', ['fornecedores' => $fornecedores]);
+        return view('app.fornecedor.listar', ['fornecedores' => $fornecedores, 'request'=>$request->all()]);
     }
 
     public function adicionar (Request $request){
 
         $msg = '';
-        //inclusao 
+        //inclusao
         if($request->input('_token') != '' && $request->input('id') == ''){
             //validação
             $regras = [
@@ -74,11 +74,34 @@ class FornecedoresController extends Controller
 
         }
 
+        //edição
+        if($request->input('_token') != '' && $request->input('id') != ''){
+
+            $fornecedor = Fornecedor::find($request->input('id'));
+            $update = $fornecedor->update($request->all());
+
+            if($update){
+                $msg = 'Cadastro Atualizado com sucesso';
+            }else {
+                $msg = 'Não foi psosivel atualizar revise as informações e tente novamente';
+
+            }
+
+            return redirect()->route('app.fornecedores.editar',['id'=>$request->input('id'), 'msg'=>$msg]);
+
+        }
+
 
 
         return view('app.fornecedor.adicionar', ['msg'=> $msg]);
     }
 
+    public function excluir () {
+        $fornecedor = Fornecedor::find($id);
+
+        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg'=> $msg]);
+
+    }
     public function editar ($id, $msg = '') {
 
         $fornecedor = Fornecedor::find($id);

@@ -26,8 +26,8 @@
                         <th>UF</th>
                         <th>Email</th>
                         <th></th>
-                        <th></th> 
-                    </tr>       
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach ($fornecedores as $fornecedor)
@@ -38,10 +38,14 @@
                             <td>{{ $fornecedor->email }}</td>
                             <td>Excluir</td>
                             <td><a href={{ route('app.fornecedores.editar',$fornecedor->id) }}>Editar</a></td>
-                        </tr>                
+                        </tr>
                     @endforeach
                 </tbody>
-            </table> 
+            </table>
+            {{ $fornecedores->appends($request)->links() }}
+            <br>
+           Exibindo {{ $fornecedores->count() }} fornecedores de {{ $fornecedores->total() }} (de {{ $fornecedores->firstItem() }} a {{ $fornecedores->lastItem() }})
+
         </div>
     </div>
 </div>

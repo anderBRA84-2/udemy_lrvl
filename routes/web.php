@@ -26,8 +26,10 @@ use App\Http\Controllers\{
         Route::get('/clientes', [ClienteController::class, 'index'])->name('app.clientes');
         Route::get('/fornecedores', [FornecedoresController::class, 'index'])->name('app.fornecedores');
         Route::post('/fornecedores/listar', [FornecedoresController::class, 'listar'])->name('app.fornecedores.listar');
+        Route::get('/fornecedores/listar', [FornecedoresController::class, 'listar'])->name('app.fornecedores.listar');//feita para a paginacao
         Route::post('/fornecedores/adicionar', [FornecedoresController::class, 'adicionar'])->name('app.fornecedores.adicionar');
         Route::get('/fornecedores/adicionar', [FornecedoresController::class, 'adicionar'])->name('app.fornecedores.adicionar');
+        Route::get('/fornecedores/excluir', [FornecedoresController::class, 'excluir'])->name('app.fornecedores.excluir');
         Route::get('/fornecedores/editar{id}/{msg?}', [FornecedoresController::class, 'editar'])->name('app.fornecedores.editar');
         Route::get('/produtos', [ProdutosController::class, 'index'])->name('app.produtos');
 
