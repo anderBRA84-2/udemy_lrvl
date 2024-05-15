@@ -74,32 +74,13 @@ class FornecedoresController extends Controller
 
         }
 
-        //edição
-        if($request->input('_token') != '' && $request->input('id') != ''){
-
-            $fornecedor = Fornecedor::find($request->input('id'));
-            $update = $fornecedor->update($request->all());
-
-            if($update){
-                $msg = 'Cadastro Atualizado com sucesso';
-            }else {
-                $msg = 'Não foi psosivel atualizar revise as informações e tente novamente';
-
-            }
-
-            return redirect()->route('app.fornecedores.editar',['id'=>$request->input('id'), 'msg'=>$msg]);
-
-        }
-
-
-
         return view('app.fornecedor.adicionar', ['msg'=> $msg]);
     }
 
-    public function excluir () {
-        $fornecedor = Fornecedor::find($id);
+    public function excluir ($id) {
+       Fornecedor::find($id)->delete();
 
-        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg'=> $msg]);
+        return redirect()->route('app.fornecedores');
 
     }
     public function editar ($id, $msg = '') {
