@@ -17,6 +17,7 @@
     </div>
 
     <div class="informacao-pagina">
+        <h1 style="color:red;">{{ $msg ?? ''}}</h1>
         <div style="width:30%; margin-left: auto; margin-right: auto;">
             <form method="POST" action="{{ route('app.fornecedores.listar') }}">
                 @csrf

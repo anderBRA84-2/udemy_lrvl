@@ -16,12 +16,10 @@
                 {{ $errors->has('usuario') ? $errors->first('usuario') : '' }}
                 <input name="senha" value="{{ old('senha') }}" type="password" placeholder="senha" class="borda-preta">
                 {{ $errors->has('senha') ? $errors->first('senha') : '' }}
-                <button type="submit" class="borda-preta">Acessar</button>        
+                <button type="submit" class="borda-preta">Acessar</button>
             </form>
             {{ isset($erro) && $erro != '' ? $erro: ''}}
         </div>
     </div>
 </div>
-
-@include('site.layouts.partials.rodape')//footer
 @endsection

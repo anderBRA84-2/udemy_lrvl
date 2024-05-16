@@ -10,7 +10,7 @@ use App\Http\Controllers\{
     LoginController,
     HomeController,
     ClienteController,
-    ProdutosController
+    ProdutoController
 };
 
         Route::get('/', [PrincipalController::class,'principal'])->name('site.index');
@@ -29,9 +29,11 @@ use App\Http\Controllers\{
         Route::get('/fornecedores/listar', [FornecedoresController::class, 'listar'])->name('app.fornecedores.listar');//feita para a paginacao
         Route::post('/fornecedores/adicionar', [FornecedoresController::class, 'adicionar'])->name('app.fornecedores.adicionar');
         Route::get('/fornecedores/adicionar', [FornecedoresController::class, 'adicionar'])->name('app.fornecedores.adicionar');
-        Route::get('/fornecedores/excluir/{id}', [FornecedoresController::class, 'excluir'])->name('app.fornecedores.excluir');
+        Route::get('/fornecedores/excluir/{id}/{msg?}', [FornecedoresController::class, 'excluir'])->name('app.fornecedores.excluir');
         Route::get('/fornecedores/editar/{id}/{msg?}', [FornecedoresController::class, 'editar'])->name('app.fornecedores.editar');
-        Route::get('/produtos', [ProdutosController::class, 'index'])->name('app.produtos');
+        Route::get('/produtos', [ProdutoController::class,'index'])->name('app.produtos');
+
+
 
         });
 

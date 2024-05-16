@@ -7,7 +7,8 @@
     </head>
 
     <body>
-        @include('site.layouts.partials.topo'){{-- //INCLUDE para incluir partes nesse caso o menu --}} 
+        @include('site.layouts.partials.topo'){{-- //INCLUDE para incluir partes nesse caso o me@include('site.layouts.partials.rodape')//footernu --}}
         @yield('content'){{-- chamamos o parametro definido em @section('content') --}}
+        @include('site.layouts.partials.rodape')//footer
     </body>
 </html>

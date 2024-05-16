@@ -14,5 +14,5 @@
     </div>
 </div>
 
-@include('site.layouts.partials.rodape')//footer
+
 @endsection
