@@ -34,6 +34,8 @@ use App\Http\Controllers\{
         Route::get('/produtos', [ProdutoController::class,'index'])->name('app.produtos');
         Route::get('/produtos/create', [ProdutoController::class,'create'])->name('app.produtos.create');
         Route::post('/produtos/store',[ProdutoController::class,'store'])->name('app.produtos.store');
+        Route::get('/produtos/show/{produto}',[ProdutoController::class,'show'])->name('app.produtos.show');
+
 
         });
 

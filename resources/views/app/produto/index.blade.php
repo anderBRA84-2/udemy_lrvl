@@ -27,6 +27,7 @@
                         <th style="background-color: #88DAF3; ">Unidade ID</th>
                         <th style="background-color: #88DAF3; "></th>
                         <th style="background-color: #88DAF3; "></th>
+                        <th style="background-color: #88DAF3; "></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,7 @@
                             <td>{{ $produto->descricao }}</td>
                             <td>{{ $produto->peso}}</td>
                             <td>{{ $produto->unidade_id}}</td>
+                            <td><a href={{route('app.produtos.show',['produto' => $produto->id])}}>Detalhes</a></td>
                             <td><a href={{-- route('app.produto.excluir',$produto->id)--}}>Excluir</a></td>
                             <td><a href={{-- route('app.produto.editar',$produto->id) --}}>Editar</a></td>
                         </tr>

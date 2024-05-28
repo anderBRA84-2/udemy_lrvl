@@ -66,15 +66,16 @@ class ProdutoController extends Controller
 
 
 
-       return redirect()->route('app.produtos',['msg'=> $msg]);
+       return redirect()->route('app.produtos');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Produto $produto)
+    public function show(Product $produto)
     {
-        //
+        //dd($produto);
+        return view('app.produto.show',['produto' => $produto]);
     }
 
     /**
