@@ -35,8 +35,10 @@ use App\Http\Controllers\{
         Route::get('/produtos/create', [ProdutoController::class,'create'])->name('app.produtos.create');
         Route::post('/produtos/store',[ProdutoController::class,'store'])->name('app.produtos.store');
         Route::get('/produtos/show/{produto}',[ProdutoController::class,'show'])->name('app.produtos.show');
-
-
+        Route::get('/produtos/edit/{produto}',[ProdutoController::class,'edit'])->name('app.produtos.edit');
+        Route::post('/produtos/edit/{produto}',[ProdutoController::class,'edit'])->name('app.produtos.edit');
+        Route::put('/produtos/update/{produto}',[ProdutoController::class,'update'])->name('app.produtos.update');
+        Route::delete('/produtos/destroy/{produto}',[ProdutoController::class,'destroy'])->name('app.produtos.delete');
         });
 
 

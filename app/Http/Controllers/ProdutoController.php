@@ -81,24 +81,40 @@ class ProdutoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Produto $produto)
+    public function edit(Product $produto)
     {
         //
+        $unidades= Unidade::all();
+
+        return view('app.produto.edit',['produto'=>$produto, 'unidades'=>$unidades]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produto $produto)
+    public function update(Request $request, Product $produto)
     {
         //
+        $request->all();//payload com dados atualizados
+
+        $produto->getAttributes();//estancia di objeto no estado anterior a requisisao
+
+        $produto->update($request->all());
+
+        return redirect()->route('app.produtos.show',['produto'=>$produto->id]);
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produto $produto)
+    public function destroy(Product $produto)
     {
         //
+        $produto->delete();
+
+        return redirect()->route('app.produtos',['produto'=>$produto->id]);
+
+
     }
 }
