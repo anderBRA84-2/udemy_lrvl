@@ -10,7 +10,8 @@ use App\Http\Controllers\{
     LoginController,
     HomeController,
     ClienteController,
-    ProdutoController
+    ProdutoController,
+    ProductDetailController
 };
 
         Route::get('/', [PrincipalController::class,'principal'])->name('site.index');
@@ -31,14 +32,20 @@ use App\Http\Controllers\{
         Route::get('/fornecedores/adicionar', [FornecedoresController::class, 'adicionar'])->name('app.fornecedores.adicionar');
         Route::get('/fornecedores/excluir/{id}/{msg?}', [FornecedoresController::class, 'excluir'])->name('app.fornecedores.excluir');
         Route::get('/fornecedores/editar/{id}/{msg?}', [FornecedoresController::class, 'editar'])->name('app.fornecedores.editar');
+       /**
+        * Caso não seja usado o route resource podemos criar manuamente os recursos
         Route::get('/produtos', [ProdutoController::class,'index'])->name('app.produtos');
         Route::get('/produtos/create', [ProdutoController::class,'create'])->name('app.produtos.create');
-        Route::post('/produtos/store',[ProdutoController::class,'store'])->name('app.produtos.store');
         Route::get('/produtos/show/{produto}',[ProdutoController::class,'show'])->name('app.produtos.show');
         Route::get('/produtos/edit/{produto}',[ProdutoController::class,'edit'])->name('app.produtos.edit');
         Route::post('/produtos/edit/{produto}',[ProdutoController::class,'edit'])->name('app.produtos.edit');
         Route::put('/produtos/update/{produto}',[ProdutoController::class,'update'])->name('app.produtos.update');
-        Route::delete('/produtos/destroy/{produto}',[ProdutoController::class,'destroy'])->name('app.produtos.delete');
+        Route::delete('/produtos/destroy/{produto}',[ProdutoController::class,'destroy'])->name('app.produtos.delete'); */
+        Route::resource('/produtos', ProdutoController::class);
+        Route::resource('/ProductDetail', ProductDetailController::class);
+
+
+
         });
 
 

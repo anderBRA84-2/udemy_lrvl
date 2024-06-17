@@ -5,12 +5,12 @@
 @section('content')
 <div class="conteudo-pagina">
     <div class="titulo-pagina">
-        <p> <h1>Fornecedor - Listar</h1> </p>
+        <p> <h1>Produtos - Listar</h1> </p>
     </div>
 
     <div class="menu">
         <ul>
-            <li> <a href="{{ route('app.produtos.create') }}">Cadastrar produto</a></li>
+            <li> <a href="{{ route('produtos.create') }}">Cadastrar produto</a></li>
             <li> <a href="">Consulta</a></li>
 
         </ul>
@@ -37,13 +37,13 @@
                             <td>{{ $produto->descricao }}</td>
                             <td>{{ $produto->peso}}</td>
                             <td>{{ $produto->unidade_id}}</td>
-                            <td><a href={{route('app.produtos.show',['produto' => $produto->id])}}>Detalhes</a></td>
-                            <form  id="form_{{$produto->id}}" method="post" action="{{ route('app.produtos.delete',['produto'=>$produto->id])}}">
+                            <td><a href={{route('produtos.show',['produto' => $produto->id])}}>Detalhes</a></td>
+                            <form  id="form_{{$produto->id}}" method="post" action="{{ route('produtos.destroy',['produto'=>$produto->id])}}">
                                 @csrf
                                 @method('DELETE')
                                 <td><a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit()">Excluir</a></td>
                             </form>
-                            <td><a href={{ route('app.produtos.edit',['produto' => $produto->id]) }}>Editar</a></td>
+                            <td><a href={{ route('produtos.edit',['produto' => $produto->id]) }}>Editar</a></td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -66,7 +66,7 @@ class ProdutoController extends Controller
 
 
 
-       return redirect()->route('app.produtos');
+       return redirect()->route('produtos.index');
     }
 
     /**
@@ -86,7 +86,8 @@ class ProdutoController extends Controller
         //
         $unidades= Unidade::all();
 
-        return view('app.produto.edit',['produto'=>$produto, 'unidades'=>$unidades]);
+         return view('app.produto.edit',['produto'=>$produto, 'unidades'=>$unidades]);
+         //return view('app.produto.create',['produto'=>$produto, 'unidades'=>$unidades]);
     }
 
     /**
@@ -101,7 +102,7 @@ class ProdutoController extends Controller
 
         $produto->update($request->all());
 
-        return redirect()->route('app.produtos.show',['produto'=>$produto->id]);
+        return redirect()->route('produtos.show',['produto'=>$produto->id]);
 
     }
 
@@ -113,7 +114,7 @@ class ProdutoController extends Controller
         //
         $produto->delete();
 
-        return redirect()->route('app.produtos',['produto'=>$produto->id]);
+        return redirect()->route('produtos.index',['produto'=>$produto->id]);
 
 
     }

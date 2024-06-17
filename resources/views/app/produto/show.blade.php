@@ -10,7 +10,7 @@
 
     <div class="menu">
         <ul>
-            <li> <a href="{{ route('app.produtos') }}">Voltar</a></li>
+            <li> <a href="{{ route('produtos.index') }}">Voltar</a></li>
             <li> <a href="">Consulta</a></li>
         </ul>
     </div>
