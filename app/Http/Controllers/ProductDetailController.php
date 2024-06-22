@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\{
+    Unidade,
+    ProductDetail
+
+};
+
 class ProductDetailController extends Controller
 {
     /**
@@ -20,6 +26,9 @@ class ProductDetailController extends Controller
     public function create()
     {
         //
+        $unidades = Unidade::all();
+
+        return view('app.productDetail.create',['unidades'=> $unidades]);
     }
 
     /**
@@ -28,6 +37,9 @@ class ProductDetailController extends Controller
     public function store(Request $request)
     {
         //
+
+        ProductDetail::create($request->all());
+        echo "cadastro realizado com sucesso";
     }
 
     /**
@@ -36,22 +48,27 @@ class ProductDetailController extends Controller
     public function show(string $id)
     {
         //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(ProductDetail $produtoDetalhe)//o objeto do tipo produto detalhes deve ser passado como paramentro pois o controlado não foi criado junto com o modelo
     {
         //
+        $unidades = Unidade::all();
+        return view('app.productDetail.edit', ['produto_detalhe'=>$produtoDetalhe, 'unidades'=>$unidades]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, ProductDetail $produtoDetalhe)
     {
         //
+        $produtoDetalhe->update($request->all());
+        echo "Registro Atualizado com sucesso";
     }
 
     /**

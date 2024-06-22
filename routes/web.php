@@ -42,7 +42,7 @@ use App\Http\Controllers\{
         Route::put('/produtos/update/{produto}',[ProdutoController::class,'update'])->name('app.produtos.update');
         Route::delete('/produtos/destroy/{produto}',[ProdutoController::class,'destroy'])->name('app.produtos.delete'); */
         Route::resource('/produtos', ProdutoController::class);
-        Route::resource('/ProductDetail', ProductDetailController::class);
+        Route::resource('/produtos-detalhes', ProductDetailController::class);
 
 
 
