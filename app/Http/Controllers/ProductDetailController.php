@@ -54,20 +54,20 @@ class ProductDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProductDetail $produtoDetalhe)//o objeto do tipo produto detalhes deve ser passado como paramentro pois o controlado não foi criado junto com o modelo
+    public function edit(ProductDetail $produtos_detalhe)//o objeto do tipo produto detalhes deve ser passado como paramentro pois o controlado não foi criado junto com o modelo
     {
         //
         $unidades = Unidade::all();
-        return view('app.productDetail.edit', ['produto_detalhe'=>$produtoDetalhe, 'unidades'=>$unidades]);
+        return view('app.productDetail.edit', ['produtos_detalhe'=>$produtos_detalhe, 'unidades'=>$unidades]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProductDetail $produtoDetalhe)
+    public function update(Request $request, ProductDetail $produtos_detalhe)
     {
         //
-        $produtoDetalhe->update($request->all());
+        $produtos_detalhe->update($request->all());
         echo "Registro Atualizado com sucesso";
     }
 
