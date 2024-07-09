@@ -48,7 +48,7 @@ class ProductDetailController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //entrada para forcar commit
 
     }
 
