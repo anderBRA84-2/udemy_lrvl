@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\{
     Unidade,
-    ProductDetail
+    ProductDetail,
+    ItenDetail
 
 };
 
@@ -38,7 +39,7 @@ class ProductDetailController extends Controller
     {
         //
 
-        ProductDetail::create($request->all());
+        ItenDetail::create($request->all());
         echo "cadastro realizado com sucesso";
     }
 
@@ -53,10 +54,15 @@ class ProductDetailController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * @param integer $id
+     * @return \Illuminate\Http\Response
      */
-    public function edit(ProductDetail $produtos_detalhe)//o objeto do tipo produto detalhes deve ser passado como paramentro pois o controlado não foi criado junto com o modelo
+
+
+    public function edit( $id/*ItenDetail $produtos_detalhe*/)//o objeto do tipo produto detalhes deve ser passado como paramentro pois o controlado não foi criado junto com o modelo
     {
         //
+        $produtos_detalhe = ItenDetail::find($id);
         $unidades = Unidade::all();
         return view('app.productDetail.edit', ['produtos_detalhe'=>$produtos_detalhe, 'unidades'=>$unidades]);
     }
@@ -64,7 +70,7 @@ class ProductDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProductDetail $produtos_detalhe)
+    public function update(Request $request, ItenDetail $produtos_detalhe)
     {
         //
         $produtos_detalhe->update($request->all());

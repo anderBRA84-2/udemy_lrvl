@@ -1,3 +1,4 @@
+<h4>Produto</h4>
 @if (isset($produtos_detalhe->id))
 <form method="post" action="{{ route('produtos-detalhes.update',['produtos_detalhe'=>$produtos_detalhe->id]) }}">
     {{--  <input type="hidden" name="id" value="{{ $produto_detalhe->id ?? '' }}"> --}}
@@ -8,6 +9,10 @@
    {{--  <input type="hidden" name="id" value="{{ $produto_detalhe->id ?? '' }}"> --}}
     @csrf
 @endif
+    <input type="text" name="nome" value="{{ $produtos_detalhe->product->nome ?? old('nome') }}" placeholder="nome" class="borda-preta">
+    {{ $errors->has('nome') ? $errors->first('nome') : '' }}
+    <input type="text" name="descricao" value="{{ $produtos_detalhe->product->descricao ?? old('descricao') }}" placeholder="descricao" class="borda-preta">
+    {{ $errors->has('descricao') ? $errors->first('descricao') : '' }}
     <input type="text" name="product_id" value="{{ $produtos_detalhe->product_id ?? old('product_id') }}" placeholder="Produto ID" class="borda-preta">
     {{ $errors->has('produto_id') ? $errors->first('produto_id') : '' }}
     <input type="text" name="comprimento" value="{{ $produtos_detalhe->comprimento ?? old('comprimento') }}" placeholder="Comprimento" class="borda-preta">

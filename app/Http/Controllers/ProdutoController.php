@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\{
     Product,
-    Unidade
+    Unidade,
+    Iten
 };
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-       $produtos = Product::simplePaginate(5);
+       $produtos = Iten::simplePaginate(5);
 
 
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
@@ -62,7 +63,7 @@ class ProdutoController extends Controller
 
         $request->validate($regras, $feedback);
 
-        Product::create($request->all());
+        Iten::create($request->all());
 
 
 
@@ -72,7 +73,7 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $produto)
+    public function show(Iten $produto)
     {
         //dd($produto);
         return view('app.produto.show',['produto' => $produto]);
@@ -81,7 +82,7 @@ class ProdutoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $produto)
+    public function edit(Iten $produto)
     {
         //
         $unidades= Unidade::all();
@@ -93,7 +94,7 @@ class ProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $produto)
+    public function update(Request $request, Iten $produto)
     {
         //
         $request->all();//payload com dados atualizados
@@ -109,7 +110,7 @@ class ProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $produto)
+    public function destroy(Iten $produto)
     {
         //
         $produto->delete();

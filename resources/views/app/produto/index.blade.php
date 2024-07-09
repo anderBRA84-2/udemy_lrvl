@@ -25,9 +25,9 @@
                         <th style="background-color: #88DAF3; ">Descrição</th>
                         <th style="background-color: #88DAF3; ">Peso</th>
                         <th style="background-color: #88DAF3; ">Unidade ID</th>
-                        <th style="background-color: #88DAF3; "></th>
-                        <th style="background-color: #88DAF3; "></th>
-                        <th style="background-color: #88DAF3; "></th>
+                        <th style="background-color: #88DAF3; ">Comprimento</th>
+                        <th style="background-color: #88DAF3; ">Altura</th>
+                        <th style="background-color: #88DAF3; ">Largura</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +37,9 @@
                             <td>{{ $produto->descricao }}</td>
                             <td>{{ $produto->peso}}</td>
                             <td>{{ $produto->unidade_id}}</td>
+                            <td>{{ $produto->productDetail->comprimento ?? ''}}</td>
+                            <td>{{ $produto->productDetail->altura ?? ''}}</td>
+                            <td>{{ $produto->productDetail->largura ?? ''}}</td>
                             <td><a href={{route('produtos.show',['produto' => $produto->id])}}>Detalhes</a></td>
                             <form  id="form_{{$produto->id}}" method="post" action="{{ route('produtos.destroy',['produto'=>$produto->id])}}">
                                 @csrf
