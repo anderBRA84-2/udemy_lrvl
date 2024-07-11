@@ -62,7 +62,7 @@ class ProductDetailController extends Controller
     public function edit( $id/*ItenDetail $produtos_detalhe*/)//o objeto do tipo produto detalhes deve ser passado como paramentro pois o controlado não foi criado junto com o modelo
     {
         //
-        $produtos_detalhe = ItenDetail::find($id);
+        $produtos_detalhe = ItenDetail::with(['product'])->find($id);
         $unidades = Unidade::all();
         return view('app.productDetail.edit', ['produtos_detalhe'=>$produtos_detalhe, 'unidades'=>$unidades]);
     }

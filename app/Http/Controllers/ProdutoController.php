@@ -16,7 +16,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-       $produtos = Iten::simplePaginate(5);
+       $produtos = Iten::with(['productDetail'])->simplePaginate(5);//com o metodo with usamas o eager loading passando o metodo do relacionamento em um array
 
 
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
