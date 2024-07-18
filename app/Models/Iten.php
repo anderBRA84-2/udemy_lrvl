@@ -11,7 +11,7 @@ class Iten extends Model
     use HasFactory;
     protected $table = 'products';//usamos para indicar que a classe deve mapear a tabela 'products'
 
-    protected $fillable = ['nome','descricao','peso','unidade_id'];
+    protected $fillable = ['fornecedor_id','nome','descricao','peso','unidade_id'];
 
     public function productDetail(){
         return $this->hasOne('App\Models\ItenDetail', 'product_id','id');//passamos como parametro a fk da tabela product detail e pk da tabela produta para fazer o relacionamento sem a convencao do eloquent

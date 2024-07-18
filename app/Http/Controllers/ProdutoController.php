@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\{
     Product,
     Unidade,
-    Iten
+    Iten,
+    Fornecedor
 };
 use Illuminate\Http\Request;
 
@@ -28,12 +29,13 @@ class ProdutoController extends Controller
     public function create(Request $request)
     {
         $unidades = Unidade::all();
+        $fornecedores = Fornecedor::all();
 
        // $produto = new Product();
 
-       // $produto->create($request->all());
+       // $produto->create($request->all());()
 
-        return view('app.produto.create',['unidades'=> $unidades]);
+       return view('app.produto.create',['unidades'=> $unidades, 'fornecedores' => $fornecedores]);
     }
 
     /**
@@ -44,6 +46,7 @@ class ProdutoController extends Controller
 
 
         $regras = [
+            'fornecedor_id'=>'exists:fornecedors,id',
             'nome'=>'required|min:3|max:200',
             'descricao'=>'required|min:1|max:200',
             'peso'=>'required|integer',
@@ -51,6 +54,7 @@ class ProdutoController extends Controller
         ];
 
         $feedback = [
+            'fornecedor_id.exists' => 'Fornecedor invalido',
             'required' => 'O campo :attribute deve ser preenchido',
             'name.min' => 'O nome deve ter no minimo 3 caracteres',
             'name.max' => 'O nome deve ter no maximo 200 caracteres',
@@ -63,7 +67,7 @@ class ProdutoController extends Controller
 
         $request->validate($regras, $feedback);
 
-        Iten::create($request->all());
+       Iten::create($request->all());
 
 
 
