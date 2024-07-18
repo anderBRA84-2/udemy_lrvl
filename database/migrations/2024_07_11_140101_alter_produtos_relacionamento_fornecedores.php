@@ -19,7 +19,7 @@ return new class extends Migration
         //criamos um usuario padrao para não apagramos nenhum registro na tabela produtos caso contrario teriamos um erro na aplicacao
         //se fosse a primeira migrate das tabelas nao era necessario
 
-        DB::table('fornecedors')->insertGetId([
+       $fornecedor_id = DB::table('fornecedors')->insertGetId([
             'name' => 'SG',
             'site' => 'sg.com.br',
             'uf'   =>  'RJ'  ,
@@ -27,7 +27,7 @@ return new class extends Migration
 
         ]);
 
-            $table->unsignedBigInteger('fornecedor_id')->after('id');
+            $table->unsignedBigInteger('fornecedor_id')->default($fornecedor_id)->after('id');
             $table->foreign('fornecedor_id')->references('id')->on('fornecedors');
         });
     }

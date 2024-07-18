@@ -28,7 +28,7 @@
     <option value="{{ $fornecedor->id }}" {{( $produto->fornecedor_id ?? old('fornecedor_id')) == $fornecedor->id ? 'selected' :'' }}>{{ $fornecedor->id." - ".$fornecedor->name }}</option>
     @endforeach
    </select>
-   {{ $errors->has('fornecdor_id') ? $errors->first('fornecedor_id') : ''}}
+   {{ $errors->has('fornecedor_id') ? $errors->first('fornecedor_id') : ''}}
 
     <button type="submit" class="borda-preta">Cadastrar</button>
 </form>
