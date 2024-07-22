@@ -122,6 +122,6 @@ class ProdutoController extends Controller
 
         return redirect()->route('produtos.index',['produto'=>$produto->id]);
 
-
+                //commitr
     }
 }
