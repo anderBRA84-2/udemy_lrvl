@@ -17,7 +17,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-       $produtos = Iten::with(['productDetail'])->simplePaginate(5);//com o metodo with usamas o eager loading passando o metodo do relacionamento em um array
+       $produtos = Iten::with(['productDetail','fornecedores'])->simplePaginate(5);//com o metodo with usamas o eager loading passando o metodo do relacionamento em um array
 
 
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
@@ -90,8 +90,9 @@ class ProdutoController extends Controller
     {
         //
         $unidades= Unidade::all();
+        $fornecedores = Fornecedor::all();
 
-         return view('app.produto.edit',['produto'=>$produto, 'unidades'=>$unidades]);
+         return view('app.produto.edit',['produto'=>$produto, 'unidades'=>$unidades, 'fornecedores' => $fornecedores]);
          //return view('app.produto.create',['produto'=>$produto, 'unidades'=>$unidades]);
     }
 

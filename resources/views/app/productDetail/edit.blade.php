@@ -17,7 +17,7 @@
 
     <div class="informacao-pagina">
         <div style="width:30%; margin-left: auto; margin-right: auto;">
-            @component('app.productDetail._components.form_create_edit',['produtos_detalhe'=>$produtos_detalhe, 'unidades'=>$unidades])
+            @component('app.productDetail._components.form_create_edit',['produtos_detalhe'=>$produtos_detalhe, 'unidades'=>$unidades,'fornecedores'=>$fornecedores])
 
             @endcomponent
 

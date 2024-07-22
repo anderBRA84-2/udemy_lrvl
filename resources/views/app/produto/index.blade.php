@@ -25,6 +25,7 @@
                         <th style="background-color: #88DAF3; " >Nome</th>
                         <th style="background-color: #88DAF3; ">Descrição</th>
                         <th style="background-color: #88DAF3; ">Fornecedor</th>
+                        <th style="background-color: #88DAF3; ">Site</th>
                         <th style="background-color: #88DAF3; ">Peso</th>
                         <th style="background-color: #88DAF3; ">Unidade ID</th>
                         <th style="background-color: #88DAF3; ">Comprimento</th>
@@ -38,6 +39,7 @@
                             <td >{{ $produto->nome }}</td>
                             <td>{{ $produto->descricao }}</td>
                             <td>{{ $produto->fornecedores->name }}</td>
+                            <td> <a href="#">{{ $produto->fornecedores->site }}</a></td>
                             <td>{{ $produto->peso}}</td>
                             <td>{{ $produto->unidade_id}}</td>
                             <td>{{ $produto->productDetail->comprimento ?? ''}}</td>
