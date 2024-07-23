@@ -11,10 +11,13 @@ class Fornecedor extends Model
     use HasFactory;
     // chamamos a classe softdeletes
     use SoftDeletes;
-    
+
     protected $table = 'fornecedors';
     protected $fillable = ['name', 'site', 'uf', 'email'];
 
+    public function produtos (){
+        return $this->hasMany('App\Models\Iten', 'fornecedor_id','id');
+    }
 
 
 

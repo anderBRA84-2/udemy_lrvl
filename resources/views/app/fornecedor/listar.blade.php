@@ -39,13 +39,35 @@
                             <td><a href={{ route('app.fornecedores.excluir',$fornecedor->id) }}>Excluir</a></td>
                             <td><a href={{ route('app.fornecedores.editar',$fornecedor->id) }}>Editar</a></td>
                         </tr>
+                        <tr>
+                            <td colspan="6">
+                                <p>Lista de Produtos</p>
+                                <table border="1" style="margin:20px">
+                                    <thead>
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>Produto</td>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        @foreach($fornecedor->produtos as $key => $produto)
+                                        <tr>
+                                            <td>{{$produto->id}}</td>
+                                            <td>{{$produto->nome}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
             {{ $fornecedores->appends($request)->links() }}
             <br>
           {{-- Exibindo {{ $fornecedores->count() }} fornecedores de {{ $fornecedores->total() }} (de {{ $fornecedores->firstItem() }} a {{ $fornecedores->lastItem() }}) --}}
-
         </div>
     </div>
 </div>
