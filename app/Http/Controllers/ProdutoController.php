@@ -51,6 +51,7 @@ class ProdutoController extends Controller
             'descricao'=>'required|min:1|max:200',
             'peso'=>'required|integer',
             'unidade_id'=>'exists:unidades,id'
+
         ];
 
         $feedback = [
@@ -101,6 +102,30 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Iten $produto)
     {
+
+
+        $regras = [
+            'fornecedor_id'=>'exists:fornecedors,id',
+            'nome'=>'required|min:3|max:200',
+            'descricao'=>'required|min:1|max:200',
+            'peso'=>'required|integer',
+            'unidade_id'=>'exists:unidades,id'
+
+        ];
+
+        $feedback = [
+            'fornecedor_id.exists' => 'Fornecedor invalido',
+            'required' => 'O campo :attribute deve ser preenchido',
+            'name.min' => 'O nome deve ter no minimo 3 caracteres',
+            'name.max' => 'O nome deve ter no maximo 200 caracteres',
+            'descricao.min' => 'A Descricao deve ter no minimo 1 caractere',
+            'descricao.max' => 'A Descricao deve ter no maximo 20 caracteres',
+            'peso.integer'=>'Entrada Invalida',
+            'unidade_id.exists' =>'unidade de medida invalida'
+
+        ];
+
+        $request->validate($regras, $feedback);
         //
         $request->all();//payload com dados atualizados
 
