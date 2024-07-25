@@ -11,7 +11,10 @@ use App\Http\Controllers\{
     HomeController,
     ClienteController,
     ProdutoController,
-    ProductDetailController
+    ProductDetailController,
+    PedidoController,
+    PedidoProdutoController
+
 };
 
         Route::get('/', [PrincipalController::class,'principal'])->name('site.index');
@@ -24,7 +27,6 @@ use App\Http\Controllers\{
     Route::middleware("autenticacao:padrao,usuario")->prefix('app')->group(function() {//passar parametros para o middleware com : e uma string que sera o parametro no metodo handle do middleware
         Route::get('/home', [HomeController::class,'index'])->name('app.home');
         Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');
-        Route::get('/clientes', [ClienteController::class, 'index'])->name('app.clientes');
         Route::get('/fornecedores', [FornecedoresController::class, 'index'])->name('app.fornecedores');
         Route::post('/fornecedores/listar', [FornecedoresController::class, 'listar'])->name('app.fornecedores.listar');
         Route::get('/fornecedores/listar', [FornecedoresController::class, 'listar'])->name('app.fornecedores.listar');//feita para a paginacao
@@ -43,6 +45,9 @@ use App\Http\Controllers\{
         Route::delete('/produtos/destroy/{produto}',[ProdutoController::class,'destroy'])->name('app.produtos.delete'); */
         Route::resource('/produtos', ProdutoController::class);
         Route::resource('/produtos-detalhes', ProductDetailController::class);
+        Route::resource('/clientes',ClienteController::class);
+        Route::resource('/pedido', PedidoController::class);
+        Route::resource('/pedido-produto', PedidoProdutoController::class);
 
 
 
