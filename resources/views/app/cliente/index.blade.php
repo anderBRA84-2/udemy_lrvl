@@ -10,7 +10,7 @@
 
     <div class="menu">
         <ul>
-            <li> <a href="{{ route('clientes.create') }}">Cadastrar produto</a></li>
+            <li> <a href="{{ route('clientes.create') }}">Cadastrar Cliente</a></li>
             <li> <a href="">Consulta</a></li>
 
         </ul>
@@ -29,7 +29,9 @@
                 <tbody>
                     @foreach ($clientes as $cliente)
                         <tr>
-                            <td >{{ $cliente->nome }}</td>
+                            <th >{{ $cliente->name }}</th>
+
+
 
                             <td><a href={{route('clientes.show',['cliente' => $cliente->id])}}>Detalhes</a></td>
                             <form  id="form_{{$cliente->id}}" method="post" action="{{ route('clientes.destroy',['cliente'=>$cliente->id])}}">

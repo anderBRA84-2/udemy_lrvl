@@ -26,7 +26,7 @@ class ProdutoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create(/*Request $request*/)
     {
         $unidades = Unidade::all();
         $fornecedores = Fornecedor::all();
