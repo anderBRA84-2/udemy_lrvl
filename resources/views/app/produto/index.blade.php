@@ -45,13 +45,13 @@
                             <td>{{ $produto->productDetail->comprimento ?? ''}}</td>
                             <td>{{ $produto->productDetail->altura ?? ''}}</td>
                             <td>{{ $produto->productDetail->largura ?? ''}}</td>
-                            <td><a href={{route('produtos.show',['produto' => $produto->id])}}>Detalhes</a></td>
+                            <td><a href="{{route('produtos.show',['produto' => $produto->id])}}">Detalhes</a></td>
                             <form  id="form_{{$produto->id}}" method="post" action="{{ route('produtos.destroy',['produto'=>$produto->id])}}">
                                 @csrf
                                 @method('DELETE')
                                 <td><a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit()">Excluir</a></td>
                             </form>
-                            <td><a href={{ route('produtos.edit',['produto' => $produto->id]) }}>Editar</a></td>
+                            <td><a href="{{ route('produtos.edit',['produto' => $produto->id]) }}">Editar</a></td>
                         </tr>
                     @endforeach
                 </tbody>

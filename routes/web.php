@@ -49,8 +49,6 @@ use App\Http\Controllers\{
         Route::resource('/pedido', PedidoController::class);
         Route::resource('/pedido-produto', PedidoProdutoController::class);
 
-
-
         });
 
 
