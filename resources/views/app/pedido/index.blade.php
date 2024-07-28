@@ -24,6 +24,9 @@
                     <tr>
                         <th style="background-color: #88DAF3; " >ID do Pedido</th>
                         <th style="background-color: #88DAF3; " >Cliente</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -33,7 +36,7 @@
                             <td>{{ $pedido->cliente_id }}</td>
 
                             <td><a href="{{route('pedido.show',['pedido' => $pedido->id])}}">Detalhes</a></td>
-                            <form  id="form_{{$produto->id}}" method="post" action="{{ route('pedido.destroy',['pedido'=>$pedido->id])}}">
+                            <form  id="form_{{$pedido->id}}" method="post" action="{{ route('pedido.destroy',['pedido'=>$pedido->id])}}">
                                 @csrf
                                 @method('DELETE')
                                 <td><a href="#" onclick="document.getElementById('form_{{$pedido->id}}').submit()">Excluir</a></td>
