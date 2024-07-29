@@ -23,7 +23,6 @@
                 <thead>
                     <tr>
                         <th style="background-color: #88DAF3; " >Nome</th>
-
                     </tr>
                 </thead>
                 <tbody>

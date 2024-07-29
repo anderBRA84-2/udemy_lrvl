@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\{
+    Pedido,
+    Iten,
+    PedidoProduto,
+    Cliente
+};
 
 class PedidoProdutoController extends Controller
 {
@@ -17,17 +23,37 @@ class PedidoProdutoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Pedido $pedido)
     {
         //
+        $produtos = Iten::all();
+
+       // dd($cliente);
+        return view('app.pedido-produto.create',['pedido' => $pedido, 'produtos' => $produtos]);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Pedido $pedido)
     {
         //
+        $regras = [
+            'produto_id' =>'exists:products,id',
+        ];
+
+        $feedback = [
+            'produto_id.exists'=>'Insira um produto',
+        ];
+
+        $request->validate($regras,$feedback);
+
+        $pedidoProduto = new PedidoProduto();
+        $pedidoProduto->pedido_id = $pedido->id;
+        $pedidoProduto->product_id = $request->get('produto_id');
+        $pedidoProduto->save();
+        return redirect()->route('pedido-produto.create',['pedido' => $pedido->id]);
     }
 
     /**

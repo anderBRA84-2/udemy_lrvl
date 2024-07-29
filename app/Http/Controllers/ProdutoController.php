@@ -6,7 +6,8 @@ use App\Models\{
     Product,
     Unidade,
     Iten,
-    Fornecedor
+    Fornecedor,
+    cliente
 };
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class ProdutoController extends Controller
     public function index(Request $request)
     {
        $produtos = Iten::with(['productDetail','fornecedores'])->simplePaginate(5);//com o metodo with usamas o eager loading passando o metodo do relacionamento em um array
-
+        $cliente = Cliente::all();
 
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }

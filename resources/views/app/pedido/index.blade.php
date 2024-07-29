@@ -27,6 +27,7 @@
                         <th></th>
                         <th></th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,7 +35,7 @@
                         <tr>
                             <td >{{ $pedido->id }}</td>
                             <td>{{ $pedido->cliente_id }}</td>
-
+                            <td><a href="{{ route('pedido-produto.create',['pedido' => $pedido->id]) }}">cadastrar produto</a></td>
                             <td><a href="{{route('pedido.show',['pedido' => $pedido->id])}}">Detalhes</a></td>
                             <form  id="form_{{$pedido->id}}" method="post" action="{{ route('pedido.destroy',['pedido'=>$pedido->id])}}">
                                 @csrf
