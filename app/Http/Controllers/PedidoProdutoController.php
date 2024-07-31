@@ -7,7 +7,8 @@ use App\Models\{
     Pedido,
     Iten,
     PedidoProduto,
-    Cliente
+    Cliente,
+    Product
 };
 
 class PedidoProdutoController extends Controller
@@ -29,6 +30,7 @@ class PedidoProdutoController extends Controller
         $produtos = Iten::all();
 
        // dd($cliente);
+       $pedido->produtos;
         return view('app.pedido-produto.create',['pedido' => $pedido, 'produtos' => $produtos]);
 
     }
@@ -50,8 +52,8 @@ class PedidoProdutoController extends Controller
         $request->validate($regras,$feedback);
 
         $pedidoProduto = new PedidoProduto();
-        $pedidoProduto->pedido_id = $pedido->id;
-        $pedidoProduto->product_id = $request->get('produto_id');
+        $pedidoProduto->pedido_id = $pedido->id;//esta injetado no metodo store PEDIDO ID
+        $pedidoProduto->product_id = $request->get('produto_id');/// requisiao PRODUCT ID
         $pedidoProduto->save();
         return redirect()->route('pedido-produto.create',['pedido' => $pedido->id]);
     }
