@@ -26,6 +26,12 @@ class Iten extends Model
 
         return $this->belongsToMany('App\Models\Pedido', 'pedido_produtos', 'product_id', 'pedido_id');
 
+        /*
+            1 - Modelo do relacionamento NxN em relação o Modelo que estamos implementando
+            2 - É a tabela auxiliar que armazena os registros de relacionamento
+            3 - Representa o nome da FK da tabela mapeada pelo model na tabela de relacionamento
+            4 - Representa o nome da FK da tabela mapeada pelo model utilizado no relacionamento que estamos implementando
+        */
     }
 
 }

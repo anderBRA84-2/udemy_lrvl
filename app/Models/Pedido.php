@@ -13,15 +13,11 @@ class Pedido extends Model
     public function produtos () {
        return $this->belongsToMany('App\Models\Iten','pedido_produtos','pedido_id','product_id');
 
-       /*
-       1- Modelo do relacionamento NxN em relação ao modelo que estamos implementando
-       2- a tabela auxiliar que armazena os registros do relacionamento
-       3 - A FK da tabela mapeada pelo modelo na tabela de relacionamento
-       4 -
-
-
-
-
-       */
+        /*
+            1 - Modelo do relacionamento NxN em relação o Modelo que estamos implementando
+            2 - É a tabela auxiliar que armazena os registros de relacionamento
+            3 - Representa o nome da FK da tabela mapeada pelo model na tabela de relacionamento
+            4 - Representa o nome da FK da tabela mapeada pelo model utilizado no relacionamento que estamos implementando
+        */
     }
 }
