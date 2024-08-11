@@ -59,9 +59,15 @@
                                <p>Exibir ID do Pedido(s)</p>
                                 @foreach($produto->pedidos as $pedido)
                                     <a href="{{route('pedido-produto.create', ['pedido' => $pedido->id ])}}">
-                                     Pedido: {{$pedido->id}}, 
+                                         Pedido: {{$pedido->id}}, Produto: {{$produto->nome}}
+                                          @php
+                                          $total = 0;
+                                          $total +=$pedido->id;
+                                          @endphp
+                                            <br>
                                     </a>
                                 @endforeach
+                                Total de {{$total}} pedidos para este produto
                             </td>
                         </tr>
                     @endforeach
