@@ -22,4 +22,10 @@ class Iten extends Model
         return $this->belongsTo('App\Models\Fornecedor', 'fornecedor_id', 'id');
     }
 
+    public function pedidos (){
+
+        return $this->belongsToMany('App\Models\Pedido', 'pedido_produtos', 'product_id', 'pedido_id');
+
+    }
+
 }

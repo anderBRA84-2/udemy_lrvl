@@ -30,7 +30,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pedido->produtos as $produto )
+                        @foreach ($pedido->produtos as $produto ) {{-- $pedido->produtos devido ao relcionamento no modelo PedidoProduto --}}
                         <tr>
                             <td>
                                 {{ $produto->id }}

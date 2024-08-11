@@ -53,6 +53,12 @@
                             </form>
                             <td><a href="{{ route('produtos.edit',['produto' => $produto->id]) }}">Editar</a></td>
                         </tr>
+
+                        <tr>
+                            <td colspan="12">
+                                Exibir ID do Pedido(s)
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
 
