@@ -40,10 +40,10 @@
                             <td>{{ $produto->pivot->created_at->format('d/m/y') }}</td>
                             <td>{{ $produto->pivot->quantidade }}</td>
                             <td>
-                                <form id="form_{{ $pedido->id }}_{{ $produto->id }}" action="{{ route('pedido-produto.destroy',['pedido'=>$pedido->id,'produto'=>$produto->id]) }}" method="post">
+                                <form id="form_{{ $produto->pivot->id }}" action="{{ route('pedido-produto.destroy',['pedidoProduto'=>$produto->pivot->id, 'pedido_id'=> $pedido->id]) }}" method="post">
                                     @method('DELETE')
                                     @csrf
-                                    <a href="#" onclick="document.getElementById('form_{{ $pedido->id }}_{{ $produto->id }}').submit()">Remover</a>
+                                    <a href="#" onclick="document.getElementById('form_{{ $produto->pivot->id }}').submit()">Remover</a>
                                 </form>
 
                             </td>

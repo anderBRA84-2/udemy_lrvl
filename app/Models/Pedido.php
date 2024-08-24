@@ -11,7 +11,7 @@ class Pedido extends Model
     use HasFactory;
 
     public function produtos () {
-       return $this->belongsToMany('App\Models\Iten','pedido_produtos','pedido_id','product_id')->withPivot('created_at','quantidade');
+       return $this->belongsToMany('App\Models\Iten','pedido_produtos','pedido_id','product_id')->withPivot('id','created_at','quantidade');
 
         /*
             1 - Modelo do relacionamento NxN em relação o Modelo que estamos implementando
