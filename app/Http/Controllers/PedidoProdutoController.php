@@ -43,24 +43,44 @@ class PedidoProdutoController extends Controller
         //
         $regras = [
             'produto_id' =>'exists:products,id',
+            'quantidade' =>'required'
         ];
 
         $feedback = [
             'produto_id.exists'=>'Insira um produto',
+            'required'=>'Insira a quantidade'
         ];
 
         $request->validate($regras,$feedback);
 
-        $pedidoProduto = new PedidoProduto();
+       /* $pedidoProduto = new PedidoProduto();
         $pedidoProduto->pedido_id = $pedido->id;//esta injetado no metodo store PEDIDO ID
         $pedidoProduto->product_id = $request->get('produto_id');/// requisiao PRODUCT ID
+        $pedidoProduto->quantidade = $request->get('quantidade');
         $pedidoProduto->save();
+
+
+       // dd($request);
+
+        $pedido->produtos()->attach(
+        $request->get('product_id'),
+        ['quantidade' =>$request->get('quantidade')]
+    ); */
+
+
+
+    $pedido->produtos()->attach([
+        $request->get('product_id') => ['quantidade' => $request->get('quantidade')]
+    ]);
+
+
+
         return redirect()->route('pedido-produto.create',['pedido' => $pedido->id]);
     }
 
-    /**
-     * Display the specified resource.
-     */
+
+
+
     public function show(string $id)
     {
         //
@@ -85,8 +105,17 @@ class PedidoProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Pedido $pedido, Iten $produto)
     {
         //
+
+      /*  PedidoProduto::where([
+            'pedido_id' => $pedido->id,
+            'product_id' => $produto->id
+        ])->delete(); */
+
+        $pedido->produtos()->detach($pedido->id);//removendo atraves do relacionamento
+
+        return redirect()->route('pedido-produto.create',['pedido' => $pedido->id]);
     }
 }

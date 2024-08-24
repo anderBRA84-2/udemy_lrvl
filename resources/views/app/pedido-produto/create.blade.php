@@ -27,19 +27,31 @@
                         <tr>
                             <th>ID</th>
                             <th>NOME DO PRODUTO</th>
+                            <th>DATA DE INCLUSAO</th>
+                            <th>QUANTIDADE</th>
+                            <th>Remover Registro</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($pedido->produtos as $produto ) {{-- $pedido->produtos devido ao relcionamento no modelo PedidoProduto --}}
                         <tr>
-                            <td>
-                                {{ $produto->id }}
-                            </td>
+                            <td>{{ $produto->id }}</td>
                             <td>{{ $produto->nome }}</td>
+                            <td>{{ $produto->pivot->created_at->format('d/m/y') }}</td>
+                            <td>{{ $produto->pivot->quantidade }}</td>
+                            <td>
+                                <form id="form_{{ $pedido->id }}_{{ $produto->id }}" action="{{ route('pedido-produto.destroy',['pedido'=>$pedido->id,'produto'=>$produto->id]) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <a href="#" onclick="document.getElementById('form_{{ $pedido->id }}_{{ $produto->id }}').submit()">Remover</a>
+                                </form>
+
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+
                 @component('app.pedido-produto._components.form_create_edit',['pedido' => $pedido, 'produtos' => $produtos])
 
                 @endcomponent
