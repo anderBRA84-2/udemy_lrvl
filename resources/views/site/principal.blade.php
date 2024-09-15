@@ -20,7 +20,7 @@
     </div>
 
     <div class="video">
-        <img src={{ asset('img/player_video.jpg') }}>
+        <iframe class="video" width="637" height="403" src="https://www.youtube.com/embed/ipzR9bhei_o" title="Bach, Toccata and Fugue in D minor, organ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 </div>
 

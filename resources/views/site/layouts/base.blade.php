@@ -6,7 +6,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
-    <body>
+    <body class="bg-danger text-white p-3">
         @include('site.layouts.partials.topo'){{-- //INCLUDE para incluir partes nesse caso o me@include('site.layouts.partials.rodape')//footernu --}}
         @yield('content'){{-- chamamos o parametro definido em @section('content') --}}
         @include('site.layouts.partials.rodape')//footer
